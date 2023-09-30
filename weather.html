@@ -41,6 +41,18 @@
         letter-spacing: 3px;
         text-shadow: 0 0 2px #00FF00, 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 16px #00FF00;
       }
+      .chart {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .bar {
+            width: 30px;
+            background-color: #007acc;
+            margin: 5px;
+            float: left;
+         } 
     </style>
   </head>
   <body>
@@ -111,5 +123,15 @@ $.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4
     }
   });
 </script>
+
+
+<h1>Simple Bar Chart</h1>
+    <div class="chart">
+        <div class="bar" style="height: 80px;"></div>
+        <div class="bar" style="height: 120px;"></div>
+        <div class="bar" style="height: 60px;"></div>
+        <div class="bar" style="height: 90px;"></div>
+        <div class="bar" style="height: 150px;"></div>
+    </div>
   </body>
 </html>
