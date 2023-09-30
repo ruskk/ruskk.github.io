@@ -3,6 +3,7 @@
   <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <title>Weather</title>
     <style>
       body {
@@ -133,5 +134,56 @@ $.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4
         <div class="bar" style="height: 90px;"></div>
         <div class="bar" style="height: 150px;"></div>
     </div>
+      <br>
+      <br>
+      <canvas id="temperatureChart" width="400" height="200"></canvas>
+<script>
+    // Your ThingSpeak Channel ID and Read API Key
+    const channelID = 2034806;
+    const apiKey = V3CF4WNLDC75ZCT2;
+
+    // URL to fetch data from ThingSpeak
+    const dataURL = `https://api.thingspeak.com/channels/${channelID}/fields/1.json?results=10&api_key=${apiKey}`;
+
+    // Function to fetch data and create the chart
+    async function fetchDataAndCreateChart() {
+        try {
+            const response = await fetch(dataURL);
+            const data = await response.json();
+
+            const timestamps = data.feeds.map(feed => new Date(feed.created_at));
+            const temperatures = data.feeds.map(feed => parseFloat(feed.field1));
+
+            const ctx = document.getElementById('temperatureChart').getContext('2d');
+            const temperatureChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timestamps,
+                    datasets: [{
+                        label: 'Temperature (°C)',
+                        data: temperatures,
+                        borderColor: 'blue',
+                        fill: false,
+                    }],
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'hour',
+                            },
+                        },
+                    },
+                },
+            });
+        } catch (error) {
+            console.error('Error fetching or creating chart:', error);
+        }
+    }
+
+    // Call the function to fetch data and create the chart
+    fetchDataAndCreateChart();
+</script>
   </body>
 </html>
