@@ -129,6 +129,22 @@ $.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4
     }
   });
 </script>
+     <div>
+        <p>Temp Chart:</p>
+        <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2034806/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+         <div>
+        <p>Humidity Chart:</p>
+        <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2034806/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
 
     <div>
         <p>Wind Speed Chart:</p>
@@ -138,8 +154,6 @@ $.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4
             style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
     </div>
-
-    <!-- Embed ThingSpeak chart for Wind Direction -->
     <div>
         <p>Wind Direction Chart:</p>
         <iframe
