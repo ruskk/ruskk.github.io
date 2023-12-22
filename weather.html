@@ -73,6 +73,8 @@
       <p>Here you can find the latest weather updates for our city:</p>
       <p>Temperature: <span id="temperature"></span>&deg;C</p>
       <p>Humidity: <span id="humidity"></span>%</p>
+      <p>Wind Speed: <span id="speed"></span>m/s</p>
+      <p>Wind Direction: <span id="direction"></span>%</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,46 +91,21 @@
         $('#humidity').text(humidity);
       });
     </script>
-    <canvas id="myChart"></canvas>
     <script>
-    // Fetch data from ThingSpeak using jQuery
-$.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4WNLDC75ZCT2&results=10', function(data) {
-  
-  // Extract temperature and humidity data from ThingSpeak JSON response
-  var temperatures = [];
-  var humidities = [];
-  for (var i = 0; i < data.feeds.length; i++) {
-    temperatures.push(data.feeds[i].field1);
-    humidities.push(data.feeds[i].field2);
-  }
-  
-  // Create a new Chart.js line chart
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'],
-      datasets: [
-        {
-          label: 'Temperature (°C)',
-          data: temperatures,
-          borderColor: 'red',
-          fill: false
-        },
-        {
-          label: 'Humidity (%)',
-          data: humidities,
-          borderColor: 'blue',
-          fill: false
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false
-    }
-  });
-</script>
+      // Retrieve the last entry from ThingSpeak
+      var url = 'https://api.thingspeak.com/channels/2034806/feeds/last.json?api_key=YYIVI4ZO9S07TD5I';
+      $.getJSON(url, function(data) {
+        // Extract the temperature and humidity values from the response
+        var speed = data.field1;
+        var direction = data.field2;
+
+        // Update the HTML with the sreed and direction values
+        $('#speed').text(speed);
+        $('#direction').text(direction);
+      });
+    </script>
+
+
      <div>
         <p>Temp Chart:</p>
         <iframe
