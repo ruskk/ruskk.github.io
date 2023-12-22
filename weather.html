@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Data Visualization</title>
+    <!-- Include the ThingSpeak chart JavaScript library -->
+    <script src="https://thingspeak.com/assets/plugins/shortcodes/external_embed.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
@@ -124,6 +129,26 @@ $.getJSON(''https://api.thingspeak.com/channels/2034806/feeds.json?api_key=V3CF4
     }
   });
 </script>
+
+    <div>
+        <p>Wind Speed Chart:</p>
+        <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+
+    <!-- Embed ThingSpeak chart for Wind Direction -->
+    <div>
+        <p>Wind Direction Chart:</p>
+        <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2388078/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+
 
 
 <h1>Simple Bar Chart</h1>
