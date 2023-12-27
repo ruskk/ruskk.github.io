@@ -80,11 +80,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       // Retrieve the last entry from ThingSpeak
-      var url = 'https://api.thingspeak.com/channels/2034806/feeds/last.json?api_key=V3CF4WNLDC75ZCT2';
+      var url = 'https://api.thingspeak.com/channels/2388078/feeds/last.json?api_key=YYIVI4ZO9S07TD5I';
       $.getJSON(url, function(data) {
         // Extract the temperature and humidity values from the response
-        var temperature = data.field1;
-        var humidity = data.field2;
+        var temperature = data.field3;
+        var humidity = data.field4;
 
         // Update the HTML with the temperature and humidity values
         $('#temperature').text(temperature);
@@ -99,7 +99,7 @@
         var speed = data.field1;
         var direction = data.field2;
 
-        // Update the HTML with the sreed and direction values
+        // Update the HTML with the speed and direction values
         $('#speed').text(speed);
         $('#direction').text(direction);
       });
