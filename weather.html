@@ -109,18 +109,26 @@
     </script>
 
 
-    <p id="lastUpdate"></p>
+   <p id="lastUpdate"></p>
 
 <script>
     function updateLastUpdate() {
-        // Get the current date and time
-        var currentDate = new Date();
+        // Check if the data is available (you can modify this condition based on your sensor data)
+        var isDataAvailable = true; // Change this condition based on your sensor status
 
-        // Format the date and time
-        var formattedDate = currentDate.toLocaleString();
+        if (isDataAvailable) {
+            // Get the current date and time
+            var currentDate = new Date();
 
-        // Update the lastUpdate element with the formatted date and time
-        document.getElementById("lastUpdate").innerHTML = "Last Update: " + formattedDate;
+            // Format the date and time
+            var formattedDate = currentDate.toLocaleString();
+
+            // Update the lastUpdate element with the formatted date and time
+            document.getElementById("lastUpdate").innerHTML = "Last Update: " + formattedDate;
+        } else {
+            // If data is not available, display a message or leave it empty
+            document.getElementById("lastUpdate").innerHTML = "Data not available";
+        }
     }
 
     // Update the last update time every 15 seconds (you can adjust the interval)
@@ -129,7 +137,6 @@
     // Initial update
     updateLastUpdate();
 </script>
-
 
 
      <div>
