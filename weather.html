@@ -109,6 +109,29 @@
     </script>
 
 
+    <p id="lastUpdate"></p>
+
+<script>
+    function updateLastUpdate() {
+        // Get the current date and time
+        var currentDate = new Date();
+
+        // Format the date and time
+        var formattedDate = currentDate.toLocaleString();
+
+        // Update the lastUpdate element with the formatted date and time
+        document.getElementById("lastUpdate").innerHTML = "Last Update: " + formattedDate;
+    }
+
+    // Update the last update time every 15 seconds (you can adjust the interval)
+    setInterval(updateLastUpdate, 15000);
+
+    // Initial update
+    updateLastUpdate();
+</script>
+
+
+
      <div>
         <p>Temp Chart:</p>
         <iframe
