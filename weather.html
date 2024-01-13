@@ -109,35 +109,45 @@
     </script>
 
 
-   <p id="lastUpdate"></p>
+  <p id="lastSensorUpdate"></p>
 
 <script>
-    function updateLastUpdate() {
-        // Check if the data is available (you can modify this condition based on your sensor data)
-        var isDataAvailable = true; // Change this condition based on your sensor status
+    function getSensorLastUpdateTime() {
+        // Replace 'your_channel_id' and 'your_read_api_key' with your actual ThingSpeak channel ID and read API key
+        var apiUrl = 'https://api.thingspeak.com/channels/your_channel_id/feeds.json?api_key=your_read_api_key&results=1';
 
-        if (isDataAvailable) {
-            // Get the current date and time
-            var currentDate = new Date();
-
-            // Format the date and time
-            var formattedDate = currentDate.toLocaleString();
-
-            // Update the lastUpdate element with the formatted date and time
-            document.getElementById("lastUpdate").innerHTML = "Last Update: " + formattedDate;
-        } else {
-            // If data is not available, display a message or leave it empty
-            document.getElementById("lastUpdate").innerHTML = "Data not available";
-        }
+        // Make an API request to ThingSpeak
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.feeds && data.feeds.length > 0) {
+                    // Get the timestamp of the last update from ThingSpeak
+                    var lastUpdateTime = new Date(data.feeds[0].created_at);
+                    updateLastSensorUpdate(lastUpdateTime);
+                } else {
+                    // If no data is available, display a message or leave it empty
+                    document.getElementById("lastSensorUpdate").innerHTML = "Sensor data not available";
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data from ThingSpeak:', error);
+            });
     }
 
-    // Update the last update time every 15 seconds (you can adjust the interval)
-    setInterval(updateLastUpdate, 15000);
+    function updateLastSensorUpdate(lastUpdateDate) {
+        // Format the date and time
+        var formattedDate = lastUpdateDate.toLocaleString();
+
+        // Update the lastSensorUpdate element with the formatted date and time
+        document.getElementById("lastSensorUpdate").innerHTML = "Last Sensor Update: " + formattedDate;
+    }
+
+    // Update the last sensor update time every 15 seconds (you can adjust the interval)
+    setInterval(getSensorLastUpdateTime, 15000);
 
     // Initial update
-    updateLastUpdate();
+    getSensorLastUpdateTime();
 </script>
-
 
      <div>
         <p>Temp Chart:</p>
