@@ -112,27 +112,29 @@
   <p id="lastSensorUpdate"></p>
 
 <script>
-    function getSensorLastUpdateTime() {
-        // Replace 'your_channel_id' and 'your_read_api_key' with your actual ThingSpeak channel ID and read API key
-        var apiUrl = 'https://api.thingspeak.com/channels/your_channel_id/feeds.json?api_key=your_read_api_key&results=1';
+function getSensorLastUpdateTime() {
+    // Replace 'your_channel_id' and 'your_read_api_key' with your actual ThingSpeak channel ID and read API key
+    var apiUrl = 'https://api.thingspeak.com/channels/2388078/feeds.json?api_key=YYIVI4ZO9S07TD5I&results=1';
 
-        // Make an API request to ThingSpeak
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (data.feeds && data.feeds.length > 0) {
-                    // Get the timestamp of the last update from ThingSpeak
-                    var lastUpdateTime = new Date(data.feeds[0].created_at);
-                    updateLastSensorUpdate(lastUpdateTime);
-                } else {
-                    // If no data is available, display a message or leave it empty
-                    document.getElementById("lastSensorUpdate").innerHTML = "Sensor data not available";
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data from ThingSpeak:', error);
-            });
-    }
+    // Make an API request to ThingSpeak
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.feeds && data.feeds.length > 0) {
+                // Get the timestamp of the last update from ThingSpeak
+                var lastUpdateTime = new Date(data.feeds[0].created_at);
+
+                // Update the lastSensorUpdate element with the formatted date and time
+                updateLastSensorUpdate(lastUpdateTime);
+            } else {
+                // If no data is available, display a message or leave it empty
+                document.getElementById("lastSensorUpdate").innerHTML = "Sensor data not available";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data from ThingSpeak:', error);
+        });
+}
 
     function updateLastSensorUpdate(lastUpdateDate) {
         // Format the date and time
