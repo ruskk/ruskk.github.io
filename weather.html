@@ -78,6 +78,7 @@
       <p>Humidity: <span id="humidity"></span>%</p>
       <p>Wind Speed: <span id="speed"></span>m/s</p>
       <p>Wind Direction: <span id="direction"></span>&deg;</p>
+      <p>Power Supply Voltage: <span id="voltage"></span>V</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -98,13 +99,24 @@
       // Retrieve the last entry from ThingSpeak
       var url = 'https://api.thingspeak.com/channels/2388078/feeds/last.json?api_key=YYIVI4ZO9S07TD5I';
       $.getJSON(url, function(data) {
-        // Extract the temperature and humidity values from the response
+        // Extract the speed and direction values from the response
         var speed = data.field1;
         var direction = data.field2;
 
         // Update the HTML with the speed and direction values
         $('#speed').text(speed);
         $('#direction').text(direction);
+      });
+    </script>
+    <script>
+      // Retrieve the last entry from ThingSpeak
+      var url = 'https://api.thingspeak.com/channels/2388078/feeds/last.json?api_key=YYIVI4ZO9S07TD5I';
+      $.getJSON(url, function(data) {
+        // Extract the speed and direction values from the response
+        var voltage = data.field5;
+
+        // Update the HTML with the speed and direction values
+        $('#voltage').text(voltage);
       });
     </script>
 
