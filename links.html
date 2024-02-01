@@ -122,7 +122,7 @@
       const data = await response.json();
       
       const prices = data.prices.map(entry => entry[1]);
-      const timestamps = data.prices.map(entry => entry[0]);
+      const timestamps = data.prices.map(entry => new Date(entry[0]).toLocaleDateString());
 
       updateChart(timestamps, prices);
     } catch (error) {
@@ -139,7 +139,7 @@
         datasets: [{
           label: 'Bitcoin Price (USD)',
           data: prices,
-          borderColor: 'rgba(75, 192, 192, 1)',
+          borderColor: 'rgba(0, 128, 0, 1)',  // Green color
           borderWidth: 2,
           fill: false,
         }],
@@ -147,7 +147,7 @@
       options: {
         scales: {
           x: {
-            type: 'linear',
+            type: 'category',
             position: 'bottom',
           },
           y: {
@@ -165,7 +165,6 @@
   // Fetch Bitcoin data with a default timescale
   fetchBitcoinData('30');
 </script>
-
 
       <br>
 
