@@ -109,9 +109,9 @@
 
    <canvas id="bitcoinChart" width="800" height="400"></canvas>
 
-<button onclick="changeTimescale('7d')">7 Days</button>
-<button onclick="changeTimescale('30d')">30 Days</button>
-<button onclick="changeTimescale('90d')">90 Days</button>
+<button onclick="changeTimescale('7')">7 Days</button>
+<button onclick="changeTimescale('30')">30 Days</button>
+<button onclick="changeTimescale('90')">90 Days</button>
 
 <script>
   async function fetchBitcoinData(timescale) {
@@ -122,7 +122,7 @@
       const data = await response.json();
       
       const prices = data.prices.map(entry => entry[1]);
-      const timestamps = data.timestamps.map(timestamp => new Date(timestamp));
+      const timestamps = data.prices.map(entry => entry[0]);
 
       updateChart(timestamps, prices);
     } catch (error) {
@@ -147,10 +147,8 @@
       options: {
         scales: {
           x: {
-            type: 'time',
-            time: {
-              unit: 'day',
-            },
+            type: 'linear',
+            position: 'bottom',
           },
           y: {
             beginAtZero: true,
@@ -167,6 +165,7 @@
   // Fetch Bitcoin data with a default timescale
   fetchBitcoinData('30');
 </script>
+
 
       <br>
 
