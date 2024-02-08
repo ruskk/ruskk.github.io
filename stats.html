@@ -56,16 +56,16 @@
       <p><a href="https://www.aftonbladet.se">Aftonbladet</a></p>
       <p><a href="https://app.labkonet.com/">Labkonet</a></p>
       <br>
-      <h1>S&P 500 Price</h1>
-<p id="sp500-price">Loading...</p>
+     <p id="sp500-price">Loading...</p>
 
 <script>
     $(document).ready(function () {
+        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var apiUrl = 'https://finance.yahoo.com/quote/%5EGSPC/';
 
-        // Fetch S&P 500 price from Yahoo Finance
+        // Fetch S&P 500 price from Yahoo Finance using a proxy
         $.ajax({
-            url: apiUrl,
+            url: proxyUrl + apiUrl,
             method: 'GET',
             success: function (data) {
                 // Extracting the price using a regular expression
