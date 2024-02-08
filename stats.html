@@ -56,23 +56,23 @@
       <p><a href="https://www.aftonbladet.se">Aftonbladet</a></p>
       <p><a href="https://app.labkonet.com/">Labkonet</a></p>
       <br>
-     <p id="sp500-price">Loading...</p>
+    <p id="sp500-price"></p>
 
 <script>
     $(document).ready(function () {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        var apiUrl = 'https://finance.yahoo.com/quote/%5EGSPC/';
+        // Replace 'YOUR_API_KEY' with your actual Alpha Vantage API key
+        var apiKey = 'VIDNSARX1NDRA80I';
+        var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=SPY&apikey=' + apiKey;
 
-        // Fetch S&P 500 price from Yahoo Finance using a proxy
+        // Fetch S&P 500 price from Alpha Vantage
         $.ajax({
-            url: proxyUrl + apiUrl,
+            url: apiUrl,
             method: 'GET',
+            dataType: 'json',
             success: function (data) {
-                // Extracting the price using a regular expression
-                var match = data.match(/"regularMarketPrice":{"raw":(\d+\.\d+),/);
-                if (match && match[1]) {
-                    var sp500Price = parseFloat(match[1]);
-                    $('#sp500-price').text('S&P 500 Price: $' + sp500Price.toFixed(2));
+                if (data['Global Quote']) {
+                    var sp500Price = data['Global Quote']['05. price'];
+                    $('#sp500-price').text('S&P 500 Price: $' + sp500Price);
                 } else {
                     $('#sp500-price').text('Error fetching data');
                 }
