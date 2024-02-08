@@ -83,7 +83,6 @@
         });
     });
 </script>
-       <h1>Current Monero Price</h1>
     <p id="moneroPrice">Fetching Monero price...</p>
 
     <script>
@@ -94,7 +93,7 @@
                 const data = await response.json();
                 const moneroPrice = data.monero.usd;
 
-                document.getElementById('moneroPrice').textContent = `Current Price: $${moneroPrice}`;
+                document.getElementById('moneroPrice').textContent = `XMR-USD: $${moneroPrice}`;
             } catch (error) {
                 console.error('Error fetching Monero price:', error);
                 document.getElementById('moneroPrice').textContent = 'Error fetching Monero price';
@@ -108,7 +107,6 @@
         setInterval(getMoneroPrice, 60000);
     </script>
     
-     <h1>Current Bitcoin Price</h1>
     <p id="bitcoinPrice">Fetching Bitcoin price...</p>
 
     <script>
@@ -119,7 +117,7 @@
                 const data = await response.json();
                 const bitcoinPrice = data.bitcoin.usd;
 
-                document.getElementById('bitcoinPrice').textContent = `Current Price: $${bitcoinPrice}`;
+                document.getElementById('bitcoinPrice').textContent = `BTC-USD: $${bitcoinPrice}`;
             } catch (error) {
                 console.error('Error fetching Bitcoin price:', error);
                 document.getElementById('bitcoinPrice').textContent = 'Error fetching Bitcoin price';
