@@ -166,6 +166,33 @@
   fetchBitcoinData('30');
 </script>
 
+<h1>S&P 500 Price</h1>
+<p id="sp500-price">Loading...</p>
+
+<script>
+    $(document).ready(function () {
+        var apiUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?interval=1d';
+
+        // Fetch S&P 500 price from Yahoo Finance
+        $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.chart && data.chart.result && data.chart.result[0] && data.chart.result[0].meta) {
+                    var sp500Price = data.chart.result[0].meta.regularMarketPrice;
+                    $('#sp500-price').text('S&P 500 Price: $' + sp500Price.toFixed(2));
+                } else {
+                    $('#sp500-price').text('Error fetching data');
+                }
+            },
+            error: function () {
+                $('#sp500-price').text('Error fetching data');
+            }
+        });
+    });
+</script>
+
       <br>
 
       <br>
