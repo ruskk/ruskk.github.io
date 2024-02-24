@@ -18,53 +18,46 @@
             line-height: 1.5;
             text-align: center;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .menu {
-            display: flex;
-            flex-direction: column;
             background-color: #222;
             color: white;
             padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
             width: 100%;
             max-width: 200px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin-bottom: 20px;
+            order: 1;
+            z-index: 1;
         }
 
         .content {
             padding: 20px;
             text-align: left;
-            margin-left: 0;
-            margin-top: 80px;
+            order: 2;
+            flex-grow: 1;
         }
 
-        .matrix {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 20px;
-            line-height: 1.5;
-            letter-spacing: 3px;
-            text-shadow: 0 0 2px #00FF00, 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 16px #00FF00;
-        }
-
-        .chart {
+        .iframe-container {
             width: 100%;
-            max-width: 300px;
-            height: 200px;
-            border: 1px solid #ccc;
+            overflow: hidden;
         }
 
-        /* Add more styles as needed */
+        .responsive-iframe {
+            width: 100%;
+            height: 0;
+            padding-bottom: 60%; /* Adjust this value based on your iframe aspect ratio */
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
 
         @media (min-width: 600px) {
+            body {
+                flex-direction: row;
+            }
+
             .content {
                 margin-left: 220px;
             }
@@ -173,9 +166,7 @@ function getSensorLastUpdateTime() {
      <div>
         <p>Temp Chart:</p>
         <iframe
-            width="100%"
-            height="260"
-            style="border: 1px solid #cccccc;"
+            class="responsive-iframe"
             src="https://thingspeak.com/channels/2388078/charts/3?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=500&type=line&width=850">
 
 
@@ -184,9 +175,7 @@ function getSensorLastUpdateTime() {
          <div>
         <p>Humidity Chart:</p>
         <iframe
-            width="100%"
-            height="260"
-            style="border: 1px solid #cccccc;"
+            class="responsive-iframe"
             src="https://thingspeak.com/channels/2388078/charts/4?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -195,9 +184,7 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Wind Speed Chart:</p>
         <iframe
-            width="100%"
-            height="260"
-            style="border: 1px solid #cccccc;"
+            class="responsive-iframe"
             src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -205,9 +192,7 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Wind Direction Chart:</p>
         <iframe
-            width="100%"
-            height="260"
-            style="border: 1px solid #cccccc;"
+            class="responsive-iframe"
             src="https://thingspeak.com/channels/2388078/charts/2?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -215,9 +200,7 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Power supply voltage:</p>
         <iframe
-            width="100%"
-            height="260"
-            style="border: 1px solid #cccccc;"
+            class="responsive-iframe"
             src="https://thingspeak.com/channels/2388078/charts/5?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
