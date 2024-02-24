@@ -1,76 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <head>
-
-
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Weather</title>
     <!-- Include the ThingSpeak chart JavaScript library -->
     <script src="https://thingspeak.com/assets/plugins/shortcodes/external_embed.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <title>Weather</title>
     <style>
-      body {
-        background-color: black;
-        color: #00FF00;
-        font-family: Consolas, monospace;
-        font-size: 20px;
-        line-height: 1.5;
-        text-align: center;
-      }
-      .menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 200px;
-        background-color: #222;
-        color: white;
-        padding: 20px;
-      }
-      .menu a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        margin-bottom: 20px;
-      }
-      .content {
-        margin-left: 220px;
-        padding: 20px;
-        text-align: left;
-      }
-      .matrix {
-        font-family: "Courier New", Courier, monospace;
-        font-size: 20px;
-        line-height: 1.5;
-        letter-spacing: 3px;
-        text-shadow: 0 0 2px #00FF00, 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 16px #00FF00;
-      }
-      .chart {
-            width: 300px;
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: Consolas, monospace;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: center;
+            margin: 0;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: left;
+            margin-left: 0;
+            margin-top: 80px;
+        }
+
+        .matrix {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 20px;
+            line-height: 1.5;
+            letter-spacing: 3px;
+            text-shadow: 0 0 2px #00FF00, 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 16px #00FF00;
+        }
+
+        .chart {
+            width: 100%;
+            max-width: 300px;
             height: 200px;
             border: 1px solid #ccc;
         }
 
-        .bar {
-            width: 30px;
-            background-color: #007acc;
-            margin: 5px;
-            float: left;
-         } 
+        /* Add more styles as needed */
+
+        @media (min-width: 600px) {
+            .content {
+                margin-left: 220px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="weather.html">Weather</a>
-      <a href="stats.html">Stats</a>
-    </div>
+</head>
+<body>
+<div class="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="weather.html">Weather</a>
+    <a href="stats.html">Stats</a>
+</div>
     <div class="content">
       <h1>Weather</h1>
       <p>Here you can find the latest weather updates for our city:</p>
@@ -166,10 +173,10 @@ function getSensorLastUpdateTime() {
      <div>
         <p>Temp Chart:</p>
         <iframe
-            width="850"
+            width="100%"
             height="260"
             style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/2388078/charts/3?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=500&type=line&width=850">
+            src="https://thingspeak.com/channels/2388078/charts/3?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=500&type=line&width=100%">
 
 
             </iframe>
@@ -177,10 +184,10 @@ function getSensorLastUpdateTime() {
          <div>
         <p>Humidity Chart:</p>
         <iframe
-            width="850"
+            width="100%"
             height="260"
             style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/2388078/charts/4?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
+            src="https://thingspeak.com/channels/2388078/charts/4?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=100%">
               
             </iframe>
     </div>
@@ -188,36 +195,36 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Wind Speed Chart:</p>
         <iframe
-            width="850"
+            width="100%"
             height="260"
             style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
+            src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=100%">
               
             </iframe>
     </div>
     <div>
         <p>Wind Direction Chart:</p>
         <iframe
-            width="850"
+            width="100%"
             height="260"
             style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/2388078/charts/2?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
+            src="https://thingspeak.com/channels/2388078/charts/2?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=100%">
               
             </iframe>
     </div>
     <div>
         <p>Power supply voltage:</p>
         <iframe
-            width="850"
+            width="100%"
             height="260"
             style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/2388078/charts/5?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
+            src="https://thingspeak.com/channels/2388078/charts/5?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=100%">
               
             </iframe>
     </div>
 
     <div>
-    <iframe src="https://www.yr.no/en/content/2-842497/meteogram.svg?mode=dark" width="850" height="450px" frameborder="0"></iframe>
+    <iframe src="https://www.yr.no/en/content/2-842497/meteogram.svg?mode=dark" width="100%" height="450px" frameborder="0"></iframe>
     </div>
    </body>
 </html>
