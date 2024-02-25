@@ -18,46 +18,53 @@
             line-height: 1.5;
             text-align: center;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         .menu {
+            display: flex;
+            flex-direction: column;
             background-color: #222;
             color: white;
             padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
             width: 100%;
             max-width: 200px;
-            order: 1;
-            z-index: 1;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
         }
 
         .content {
             padding: 20px;
             text-align: left;
-            order: 2;
-            flex-grow: 1;
+            margin-left: 0;
+            margin-top: 80px;
         }
 
-        .iframe-container {
-            width: 100%;
-            overflow: hidden;
+        .matrix {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 20px;
+            line-height: 1.5;
+            letter-spacing: 3px;
+            text-shadow: 0 0 2px #00FF00, 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 16px #00FF00;
         }
 
-        .responsive-iframe {
+        .chart {
             width: 100%;
-            height: 0;
-            padding-bottom: 60%; /* Adjust this value based on your iframe aspect ratio */
+            max-width: 300px;
+            height: 200px;
             border: 1px solid #ccc;
-            margin-bottom: 20px;
         }
+
+        /* Add more styles as needed */
 
         @media (min-width: 600px) {
-            body {
-                flex-direction: row;
-            }
-
             .content {
                 margin-left: 220px;
             }
@@ -166,7 +173,9 @@ function getSensorLastUpdateTime() {
      <div>
         <p>Temp Chart:</p>
         <iframe
-            class="responsive-iframe"
+            width="850"
+            height="260"
+            style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/3?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=500&type=line&width=850">
 
 
@@ -175,7 +184,9 @@ function getSensorLastUpdateTime() {
          <div>
         <p>Humidity Chart:</p>
         <iframe
-            class="responsive-iframe"
+            width="850"
+            height="260"
+            style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/4?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -184,7 +195,9 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Wind Speed Chart:</p>
         <iframe
-            class="responsive-iframe"
+            width="850"
+            height="260"
+            style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/1?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -192,7 +205,9 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Wind Direction Chart:</p>
         <iframe
-            class="responsive-iframe"
+            width="850"
+            height="260"
+            style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/2?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
@@ -200,14 +215,16 @@ function getSensorLastUpdateTime() {
     <div>
         <p>Power supply voltage:</p>
         <iframe
-            class="responsive-iframe"
+            width="850"
+            height="260"
+            style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/2388078/charts/5?bgcolor=%23000000&color=%23FF9900&dynamic=true&results=250&type=line&width=850">
               
             </iframe>
     </div>
 
     <div>
-    <iframe src="https://www.yr.no/en/content/2-842497/meteogram.svg?mode=dark" width="100%" height="450px" frameborder="0"></iframe>
+    <iframe src="https://www.yr.no/en/content/2-842497/meteogram.svg?mode=dark" width="850" height="450px" frameborder="0"></iframe>
     </div>
    </body>
 </html>
