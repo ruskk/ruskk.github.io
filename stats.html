@@ -50,39 +50,9 @@
       <a href="stats.html">Stats</a>
     </div>
     <div class="content">
-      <h1>Links</h1>
-      <p><a href="https://vasabladet.fi">Vasabladet</a> </p>
-      <p><a href="https://svenska.yle.fi">Svenska Yle</a></p>
-      <p><a href="https://www.aftonbladet.se">Aftonbladet</a></p>
-      <p><a href="https://app.labkonet.com/">Labkonet</a></p>
+      <h1>Test</h1>
+
       <br>
-    <p id="sp500-price"></p>
-
-<script>
-    $(document).ready(function () {
-        // Replace 'YOUR_API_KEY' with your actual Alpha Vantage API key
-        var apiKey = 'VIDNSARX1NDRA80I';
-        var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=SPY&apikey=' + apiKey;
-
-        // Fetch S&P 500 price from Alpha Vantage
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                if (data['Global Quote']) {
-                    var sp500Price = data['Global Quote']['05. price'];
-                    $('#sp500-price').text('S&P 500 Price: $' + sp500Price);
-                } else {
-                    $('#sp500-price').text('Error fetching data');
-                }
-            },
-            error: function () {
-                $('#sp500-price').text('Error fetching data');
-            }
-        });
-    });
-</script>
     <p id="moneroPrice">Fetching Monero price...</p>
 
     <script>
